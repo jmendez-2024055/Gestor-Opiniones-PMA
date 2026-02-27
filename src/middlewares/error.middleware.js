@@ -15,7 +15,7 @@ const manejarValidaciones = (req, res, next) => {
 
 // Middleware global de errores
 const manejarErrores = (err, req, res, next) => {
-  console.error('❌ Error:', err.message);
+  console.error('Error:', err.message);
 
   // Error de duplicado en MongoDB
   if (err.code === 11000) {
