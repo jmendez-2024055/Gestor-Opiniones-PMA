@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const { crearPublicacion, listarPublicaciones, obtenerPublicacion, editarPublicacion, eliminarPublicacion } = require('../controllers/post.controller');
-// const { crearComentario, listarComentarios } = require('../controllers/comment.controller');
+const { crearComentario, listarComentarios } = require('../controllers/comment.controller');
 const { protegerRuta } = require('../middlewares/auth.middleware');
 const { manejarValidaciones } = require('../middlewares/error.middleware');
 const { validarPublicacion } = require('../validators/post.validator');
-// const { validarComentario } = require('../validators/comment.validator');
+const { validarComentario } = require('../validators/comment.validator');
 
 // Publicaciones
 router.get('/', listarPublicaciones);
@@ -16,7 +16,7 @@ router.put('/:id', protegerRuta, validarPublicacion, manejarValidaciones, editar
 router.delete('/:id', protegerRuta, eliminarPublicacion);
 
 // Comentarios anidados en publicaciones
-// router.get('/:postId/comentarios', listarComentarios);
-// router.post('/:postId/comentarios', protegerRuta, validarComentario, manejarValidaciones, crearComentario);
+router.get('/:postId/comentarios', listarComentarios);
+router.post('/:postId/comentarios', protegerRuta, validarComentario, manejarValidaciones, crearComentario);
 
 module.exports = router;

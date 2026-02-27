@@ -6,7 +6,7 @@ const { manejarErrores } = require('./middlewares/error.middleware');
 // Rutas
 const authRoutes = require('./routes/auth.routes');
 const postRoutes = require('./routes/post.routes');
-// const commentRoutes = require('./routes/comment.routes');
+const commentRoutes = require('./routes/comment.routes');
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // Rutas principales
 app.use('/api/auth', authRoutes);
 app.use('/api/publicaciones', postRoutes);
-// app.use('/api/comentarios', commentRoutes);
+app.use('/api/comentarios', commentRoutes);
 
 // Ruta raíz
 app.get('/', (req, res) => {

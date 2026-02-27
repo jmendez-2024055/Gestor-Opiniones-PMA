@@ -1,5 +1,5 @@
 const Post = require('../models/Post');
-// const Comment = require('../models/Comment');
+const Comment = require('../models/Comment');
 const { crearError } = require('../middlewares/error.middleware');
 
 // POST /api/publicaciones
